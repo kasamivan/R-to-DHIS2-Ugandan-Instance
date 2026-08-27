@@ -1,8 +1,9 @@
-install.packages(c("httr2", "jsonlite", "dplyr", "writexl"))
+install.packages(c("httr2", "jsonlite", "dplyr", "writexl", "tidry"))
 library(httr2)
 library(jsonlite)
 library(writexl)
 library(dplyr)
+library(tidyr)
 
 Sys.setenv(DHIS2_USER = "biostat.bunyangabu")
 Sys.setenv(DHIS2_PASS = "Records@2034")
