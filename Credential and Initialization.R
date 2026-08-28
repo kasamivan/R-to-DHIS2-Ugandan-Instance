@@ -6,8 +6,8 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 
-Sys.setenv(DHIS2_USER = "biostat.bunyangabu")
-Sys.setenv(DHIS2_PASS = "Records@2034")
+Sys.setenv(DHIS2_USER = "XXXXXXXXXXXX")
+Sys.setenv(DHIS2_PASS = "XXXXXXXXXXXXX")
 
 
 
