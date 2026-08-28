@@ -1,4 +1,4 @@
-install.packages(c("httr2", "jsonlite", "dplyr", "writexl", "tidry", "ggplot2"))
+install.packages(c("httr2", "jsonlite", "dplyr", "writexl", "tidyr", "ggplot2"))
 library(httr2)
 library(jsonlite)
 library(writexl)
