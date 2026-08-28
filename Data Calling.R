@@ -8,7 +8,8 @@ resp <- req %>%
     dimension = c(
       paste0("dx:", dx_id),
       "pe:2022;2023;2024;2025;2026;2027",
-      "ou:ARrKg065SFL"
+      "ou:ARrKg065SFL",
+      paste0("aIn0fYpbJBB", ":")   # empty after colon = "all options of this dimension"
     ),
     .multi = "explode"
   ) %>%
@@ -22,6 +23,7 @@ item_names <- vapply(data$metaData$items, `[[`, character(1), "name")
 lookup <- function(uid) ifelse(uid %in% names(item_names), item_names[uid], uid)
 df$Data <- lookup(df$Data)
 df$`Organisation unit` <- lookup(df$`Organisation unit`)
+df$Sex<- lookup(df$Sex)
 df
 
 
@@ -80,3 +82,16 @@ df_long
 
 
 #######################################################################################
+
+
+
+resp <- req %>%
+  req_url_path_append("dimensions.json") %>%
+  req_url_query(fields = "id,name,dimensionType", paging = "false") %>%
+  req_perform()
+
+categorical_dx <- resp_body_json(resp, simplifyVector = TRUE)$dimensions
+dims
+
+write_xlsx(categorical_dx, "categorical_dx.xlsx")
+write_xlsx(categorical_dx, "C:/Users/USER/Desktop/R excel output/categorical_dx.xlsx")
