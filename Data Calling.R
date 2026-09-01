@@ -78,6 +78,7 @@ df_long <- df_wide |>
 
 df_wide
 df_long
+print(df_long Pahula)
 
 
 
