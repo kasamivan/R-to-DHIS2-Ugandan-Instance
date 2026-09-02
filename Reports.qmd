@@ -1,0 +1,50 @@
+---
+title: "Report Template"
+author: "Kasami Ivan"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+df2 <- df %>%
+  mutate(
+    Period = as.numeric(Period),
+    Indicator = case_when(
+      grepl("Births in the unit", Data) ~ "Births in unit",
+      grepl("ANC 1st Visit", Data) ~ "ANC 1st Visit"
+    )
+  )
+print(df2)
+
+
+ggplot(df2, aes(x = Period, y = Value, 
+                color = Indicator, group = Indicator)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 3) +
+  scale_x_continuous(breaks = 2020:2025) +
+  labs(
+    title = "Births in Unit vs ANC 1st Visits, 2020–2025",
+    x = "Year",
+    y = "Number of clients",
+    color = "Indicator"
+  ) +
+  theme_minimal()
+#******************************************************************#
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
